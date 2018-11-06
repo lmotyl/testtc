@@ -28,3 +28,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    app.service.plant_service:
+        alias: App\Service\PlantService
+        public: true
+    app.service.user_service:
+        alias: App\Service\UserService
+        public: true
