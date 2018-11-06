@@ -1,0 +1,44 @@
+version: "3.1"
+services:
+
+    testcc-postgres:
+      image: postgres:9.6-alpine
+      container_name: testcc-postgres
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - POSTGRES_USER=root
+        - POSTGRES_PASSWORD=root
+        - POSTGRES_DB=testtc
+
+    testtc-webserver:
+      image: nginx:alpine
+      container_name: testtc-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./docker/webserver/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+          - "8081:80"
+      expose:
+          - "8081"
+      environment:
+          - VIRTUAL_HOST=testtc.test
+    testtc-php-fpm:
+      build: docker/php-fpm
+      container_name: testtc-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+    testtc-nginx-proxy:
+      image: jwilder/nginx-proxy
+      container_name: testtc-nginx-proxy
+      ports:
+          - "80:80"
+      links:
+          - testtc-webserver
+      volumes:
+          - /var/run/docker.sock:/tmp/docker.sock:ro     
+
