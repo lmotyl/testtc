@@ -11,7 +11,10 @@ services:
         - POSTGRES_USER=root
         - POSTGRES_PASSWORD=root
         - POSTGRES_DB=testtc
-
+      ports:
+        - "5432:5432"
+      expose:
+        - "5432"
     testtc-webserver:
       image: nginx:alpine
       container_name: testtc-webserver
