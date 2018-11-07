@@ -118,5 +118,66 @@ GROUP BY
     colB
 
 ```
+---
+## Podstawowe zagadnienia JS
+### 1.Utwórz obiekt w JS
+```angular2html
+var a = {};
+```
+### 2.Dodaj funckję w obiekcie która wywoła przekierowanie na inną stronę. Jeśli wartość parametru wejściowego będzie równa 1 – prośba o sprawdzenie także typu danych czy jest to integer
+```angularjs
+var a = {
+    redirect: function(param) {
+        if (typeof param == "number" && param == 1) {
+            window.location = "http://new.web";
+        }
+    }
+}
+```
+### 3.Wywołaj funckję z utworzonego obiektu
+```angularjs
+a.redirect(1);
+```
+### 4.Utwórz input text o id = „test”
+```html
+<input type="text" id="test" name="test" />
+```
+### 5.Złap element po ID i zmień wartość na dowolny tekst
+```html
+var inputElement = document.getElementById('test');
+inputElement.value = 'dowolny tekst';
+```
+### Wykorzystanie ES6 w React
 
+ 1.Utwórz projekt w oparciu o bibliotekę https://reactjs.org lub zmodyfikuj kod aplikacji demonstracyjnej https://reactjs.org/docs/hello-world.html
+ 
+ 2.Utwórz dowolną klasę i dodaj dowolną metodę
+ 
+ 3.Wywołaj metodę z utworzonej klasy
+ 
+ 4.Dodaj komponent i wyświetl go w aplikacji
+ 
+ 5.Przekaż do komponentu jakąś wartość i wyświetl ją na ekranie (props)
+ 
+ 6.Dodaj funkcję w komponencie która zmieni state komponentu
+ 
+ 7.Dodaj przycisk który wywoła funkcję
 
+```html
+class Welcome extends React.Component {
+
+  someFunction() {
+      this.setState({
+        a: 'b'
+      });
+  }
+
+  render() {
+      return (
+        <button onClick={this.someFunction}>
+          Click
+        </button>
+      );
+  }
+}
+```
