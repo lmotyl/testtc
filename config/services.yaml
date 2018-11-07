@@ -34,3 +34,12 @@ services:
     app.service.user_service:
         alias: App\Service\UserService
         public: true
+    app.service.currency.update_currency_service:
+        alias: App\Service\Currency\UpdateCurrencyService
+        public: true
+#    app.service.currency.currency_service:
+#        alias: App\Service\Currency\CurrencyService
+#        public: true
+#    app.service.currency.exchange_rate_service:
+#        alias: App\Service\Currency\ExchangeRateService
+#        public: true
